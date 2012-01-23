@@ -1,0 +1,14 @@
+Document: python-celery-doc
+Title: Python Celery Documentation
+Author: Ask Solem
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-celery-doc/html/index.html
+Files: /usr/share/doc/python-celery-doc/html/*.html
+       /usr/share/doc/python-celery-doc/html/cookbook/*.html
+       /usr/share/doc/python-celery-doc/html/getting-started/*.html
+       /usr/share/doc/python-celery-doc/html/internals/*.html
+       /usr/share/doc/python-celery-doc/html/reference/*.html
+       /usr/share/doc/python-celery-doc/html/tutorials/*.html
+       /usr/share/doc/python-celery-doc/html/userguide/*.html

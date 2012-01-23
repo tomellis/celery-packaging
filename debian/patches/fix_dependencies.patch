@@ -1,0 +1,55 @@
+Description: Remove pretty-printing nose-cover3 from build.
+ nose-cover3 is not essential to the build-proccess and is not packaged
+ for Debian. Thus removing it from the sources.
+Author: Michael Fladischer <FladischerMichael@fladi.at>
+Last-Update: 2011-11-28
+Forwared: not-needed
+
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,34 +1,5 @@
+ [nosetests]
+ where = celery/tests
+-cover3-branch = 1
+-cover3-html = 1
+-cover3-package = celery
+-cover3-exclude = celery
+-	celery.tests.*
+-	celery.bin.celeryd_multi
+-	celery.bin.celeryd_detach
+-	celery.bin.celeryctl
+-	celery.bin.camqadm
+-	celery.execute
+-	celery.local
+-	celery.platforms
+-	celery.utils.patch
+-	celery.utils.compat
+-	celery.utils.mail
+-	celery.utils.functional
+-	celery.utils.dispatch*
+-	celery.utils.term
+-	celery.db.a805d4bd
+-	celery.db.dfd042c7
+-	celery.contrib*
+-	celery.concurrency.threads
+-	celery.concurrency.processes.pool
+-	celery.concurrency.gevent
+-	celery.backends.mongodb
+-	celery.backends.tyrant
+-	celery.backends.cassandra
+-	celery.events.dumper
+-	celery.events.cursesmon
+ 
+ [build_sphinx]
+ source-dir = docs/
+--- a/setup.py
++++ b/setup.py
+@@ -105,7 +105,7 @@
+ 
+ # -*- Tests Requires -*-
+ 
+-tests_require = ["nose", "nose-cover3", "sqlalchemy", "mock"]
++tests_require = ["nose", "sqlalchemy", "mock"]
+ if sys.version_info < (2, 7):
+     tests_require.append("unittest2")
+ elif sys.version_info <= (2, 5):

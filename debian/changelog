@@ -1,0 +1,13 @@
+celery (2.4.6-1) unstable; urgency=low
+
+  * New upstream release.
+    Fixes: CVE-2011-4356
+  * Update copyright to 2012.
+
+ -- Michael Fladischer <FladischerMichael@fladi.at>  Mon, 02 Jan 2012 12:45:47 +0100
+
+celery (2.4.5-1) unstable; urgency=low
+
+  * Initial release (Closes: #526350)
+
+ -- Michael Fladischer <FladischerMichael@fladi.at>  Tue, 27 Dec 2011 11:57:41 +0100

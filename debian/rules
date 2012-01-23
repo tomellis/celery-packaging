@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with python2,sphinxdoc
+
+.PHONY: override_dh_installman
+override_dh_installman:
+	set -e ; \
+	for doc in camqadm celerybeat celeryd-multi celeryd celeryev celeryctl; do \
+	  docbook-to-man debian/manpage.$$doc.sgml > $$doc.1; \
+	done
+	dh_installman
+
+.PHONY: override_dh_auto_build
+override_dh_auto_build:
+	PYTHONPATH=.:$$PYTHONPATH sphinx-build -b html -d .build/.doctrees -N docs .build/html
+	dh_auto_build
+
+.PHONY: override_dh_auto_test
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	set -e; \
+	for python in $(shell pyversions -r); do \
+	  rm -f test.db ; \
+	  PYTHONPATH=. $$python setup.py test ; \
+	done
+endif
+
+#.PHONY: override_dh_compress
+#override_dh_compress:
+#	dh_compress -X .js
+
+.PHONY: override_dh_clean
+override_dh_clean:
+	rm -rf .build
+	dh_clean
+

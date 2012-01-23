@@ -1,0 +1,37 @@
+Description: use local objects.inv where possible
+ Upstream uses intersphinx mappings that fetch the objects.inv for python, 
+ kombu and django-celery by HTTP from a remote host. Using the local 
+ objects.inv from python and kombu enables the package to build without 
+ network connection.
+Author: Michael Fladischer <FladischerMichael@fladi.at>
+Forwarded: not-needed
+Last-Update: 2011-12-27
+
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -66,11 +66,20 @@
+ # If true, '()' will be appended to :func: etc. cross-reference text.
+ add_function_parentheses = True
+ 
+-intersphinx_mapping = {
+-        "http://docs.python.org/dev": None,
+-        "http://kombu.readthedocs.org/en/latest/": None,
+-        "http://django-celery.readthedocs.org/en/latest": None,
+-}
++def check_object_path(key, url, path):
++    if os.path.isfile(path):
++        return {key: (url, path)}
++    return {}
++
++intersphinx_mapping = {}
++intersphinx_mapping.update(check_object_path('python',
++                                            'http://docs.python.org/',
++                                            '/usr/share/doc/python'
++                                              + '.'.join([str(x) for x in sys.version_info[0:2]])
++                                              + '/html/objects.inv'))
++intersphinx_mapping.update(check_object_path('kombu',
++                                             'http://kombu.readthedocs.org/en/latest/',
++                                             '/usr/share/doc/python-kombu-doc/html/objects.inv'))
+ 
+ # The name of the Pygments (syntax highlighting) style to use.
+ pygments_style = 'trac'

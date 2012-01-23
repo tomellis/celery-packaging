@@ -1,0 +1,254 @@
+<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+
+<!-- Process this file with docbook-to-man to generate an nroff manual
+     page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+     the manual page with: `docbook-to-man manpage.sgml | nroff -man |
+     less'.  A typical entry in a Makefile or Makefile.am is:
+
+manpage.1: manpage.sgml
+	docbook-to-man $< > $@
+
+
+	The docbook-to-man binary is found in the docbook-to-man package.
+	Please remember that if you create the nroff version in one of the
+	debian/rules file targets (such as build), you will need to include
+	docbook-to-man in your Build-Depends control field.
+
+  -->
+
+  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
+  <!ENTITY dhfirstname "<firstname>Michael</firstname>">
+  <!ENTITY dhsurname   "<surname>Fladischer</surname>">
+  <!-- Please adjust the date whenever revising the manpage. -->
+  <!ENTITY dhdate      "<date>10 November 2010</date>">
+  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
+       allowed: see man(7), man(1). -->
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>FladischerMichael@fladi.at</email>">
+  <!ENTITY dhusername  "fladi">
+  <!ENTITY dhucpackage "<refentrytitle>CELERYCTL</refentrytitle>">
+  <!ENTITY dhpackage   "celeryinit">
+
+  <!ENTITY debian      "<productname>Debian</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
+]>
+
+<refentry>
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      &dhfirstname;
+      &dhsurname;
+    </author>
+    <copyright>
+      <year>2010</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+
+    &dhsection;
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+
+    <refpurpose>Celery Management Utility</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1>
+    <title>DESCRIPTION</title>
+
+    <para>This manual page documents briefly the
+      <command>&dhpackage;</command> command.</para>
+
+    <para>This manual page was written for the &debian; distribution
+      because the original program does not have a manual page.</para>
+
+    <para><command>&dhpackage;</command> is a command line utility to 
+    inspect and manage worker nodes.</para>
+
+  </refsect1>
+  <refsect1>
+    <title>OPTIONS</title>
+
+    <para>This program follows the usual &gnu; command line syntax,
+    with long options starting with two dashes (`-').  A summary of
+    options is included below.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><option>-q</option>
+          <option>--quiet</option>
+        </term>
+        <listitem>
+          <para>TODO</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>--conf</option>
+        </term>
+        <listitem>
+          <para>Celery config module name (default: celeryconfig).</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>--loader</option>
+        </term>
+        <listitem>
+          <para>Celery loaders module name (default: default).</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-C</option>
+          <option>--no-color</option>
+        </term>
+        <listitem>
+          <para>Don't colorize output.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>COMMANDS</title>
+
+    <para>This program follows the usual &gnu; command line syntax,
+    with long options starting with two dashes (`-').  A summary of
+    options is included below.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <option>status</option>
+        </term>
+        <listitem>
+          <para>List active nodes in this cluster.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>result</option>
+        </term>
+        <listitem>
+          <para>Show the result of a task.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect active</option>
+        </term>
+        <listitem>
+          <para>Show all the tasks that are currently being executed.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect scheduled</option>
+        </term>
+        <listitem>
+          <para>Show all the tasks reserved by the worker because they have 
+          the eta or countdown argument set.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect reserved</option>
+        </term>
+        <listitem>
+          <para>Show all tasks that have been prefetched by the worker, and is 
+          currently waiting to be executed (does not include tasks with an eta).
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect revoked</option>
+        </term>
+        <listitem>
+          <para>List history of revoked tasks.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect registered_tasks</option>
+        </term>
+        <listitem>
+          <para>List registered tasks.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect states</option>
+        </term>
+        <listitem>
+          <para>Show worker statistics.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect enable_events</option>
+        </term>
+        <listitem>
+          <para>Enable events.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>inspect disable_events</option>
+        </term>
+        <listitem>
+          <para>Disable events.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>SEE ALSO</title>
+
+    <para>celeryd (1), celerybeat (1), celeryev (1).</para>
+  </refsect1>
+  <refsect1>
+    <title>AUTHOR</title>
+
+    <para>This manual page was written by &dhusername; &dhemail; for
+      the &debian; system (and may be used by others).  Permission is
+      granted to copy, distribute and/or modify this document under
+      the terms of the &gnu; General Public License, Version 2 any
+      later version published by the Free Software Foundation.
+    </para>
+    <para>
+      On Debian systems, the complete text of the GNU General Public
+      License can be found in /usr/share/common-licenses/GPL.
+    </para>
+
+
+  </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:2
+sgml-indent-data:t
+sgml-parent-document:nil
+sgml-default-dtd-file:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
